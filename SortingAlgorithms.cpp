@@ -3,11 +3,13 @@ using namespace std;
 void selectionSort(int arr[], int n);
 void bubbleSort(int arr[], int n);
 void printArray(int arr[], int n);
+void insertionSort(int arr[], int n);
 
 int main(){
     int arr[] = {10, 9, 8, 7, 6 ,5, 4, 3, 2 ,1};
     //selectionSort(arr, 10);
-    bubbleSort(arr, 10);
+    //bubbleSort(arr, 10);
+    insertionSort(arr, 10);
 }
 
 void selectionSort(int arr[], int n){
@@ -29,7 +31,7 @@ void selectionSort(int arr[], int n){
 void bubbleSort(int arr[], int n) {
     cout<<"Bubble Sort: " << endl;
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n-1; j++) {
+        for (int j = 0; j < n- i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
                 int temp = arr[j];
                 arr[j] = arr[j + 1];
@@ -38,6 +40,21 @@ void bubbleSort(int arr[], int n) {
         }
     }
     printArray(arr, n);  
+}
+
+void insertionSort(int arr[], int n){
+    for (int i = 1; i < n; i++) {
+        int temp = arr[i];  
+        int j = i - 1;
+        while (j >= 0 && arr[j] > temp){
+            //shift
+            arr[j+1] = arr[j];
+            j--;
+        }
+        //insert temp back
+        arr[j + 1] = temp;
+    }
+     printArray(arr, n);  
 }
 
 void printArray(int arr[], int n) {
